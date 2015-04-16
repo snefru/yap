@@ -1,16 +1,27 @@
 package io.alef.yap.expression;
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
+
 public class Pattern implements Expression {
 
 
     private final String value;
+    private final java.util.regex.Pattern pattern;
 
-    public Pattern(String value) {
+    public Pattern(final String value) {
+        checkNotNull(value);
+        checkArgument(!value.isEmpty());
         this.value = value;
+        this.pattern = java.util.regex.Pattern.compile(value);
     }
 
     public String getValue() {
         return value;
+    }
+
+    public boolean matches(final String text) {
+        return pattern.matcher(text).matches();
     }
 
     @Override
