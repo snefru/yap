@@ -14,7 +14,7 @@ public class Expressions {
     private static final Map<Symbol, Reference> references = Maps.newHashMap();
     private static final Map<List<Expression>, Sequence> sequences = Maps.newHashMap();
 
-    public static Expression lexical(String pattern) {
+    public static Expression pattern(String pattern) {
         if (patterns.containsKey(pattern))
             return patterns.get(pattern);
         final Pattern value = new Pattern(pattern);

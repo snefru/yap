@@ -18,13 +18,16 @@ public class DefaultGrammar implements Grammar {
 
     private final Symbol startSymbol;
     private final Map<String, Symbol> symbols;
+    private final State initialState;
 
-    public DefaultGrammar(String startSymbol, Map<String, Symbol> symbols) {
+    public DefaultGrammar(final String startSymbol, final Map<String, Symbol> symbols, final State initialState) {
         checkNotNull(startSymbol, "undefined start symbol");
+        checkNotNull(initialState, "undefined initial state");
         checkArgument(!symbols.isEmpty(), "undefined symbols");
         checkArgument(symbols.containsKey(startSymbol), "undefined start symbol");
         this.startSymbol = symbols.get(startSymbol);
         this.symbols = symbols;
+        this.initialState = initialState;
     }
 
     @Override
@@ -45,6 +48,11 @@ public class DefaultGrammar implements Grammar {
     @Override
     public List<Sequence> getAlternates(String symbol) {
         return symbols.get(symbol).getAlternates();
+    }
+
+    @Override
+    public State getInitialState() {
+        return initialState;
     }
 
     public static class Builder {
@@ -94,7 +102,7 @@ public class DefaultGrammar implements Grammar {
                 }
                 processed.add(state);
             }
-            return new DefaultGrammar(startSymbol, symbols);
+            return new DefaultGrammar(startSymbol, symbols, initialState);
         }
     }
 }

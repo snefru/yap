@@ -15,7 +15,7 @@ public class DefaultState implements State {
 
     private final Set<Item> items;
     private final Set<Expression> next;
-    private Map<Expression, State> transitions = Maps.newHashMap();
+    private final Map<Expression, State> transitions = Maps.newHashMap();
 
     public DefaultState(Set<Item> items) {
         this.items = closure(items);

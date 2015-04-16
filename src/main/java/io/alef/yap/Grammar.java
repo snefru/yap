@@ -15,4 +15,6 @@ public interface Grammar extends Serializable {
     Symbol getSymbol(String name);
 
     List<Sequence> getAlternates(final String symbol);
+
+    State getInitialState();
 }

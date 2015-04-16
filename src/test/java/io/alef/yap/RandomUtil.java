@@ -79,15 +79,12 @@ public class RandomUtil {
 
     public Grammar anyGrammar() {
         final DefaultGrammar.Builder builder = new DefaultGrammar.Builder();
-        for (String name : names) {
-
-        }
         return builder.startSymbol("exp")
                 .define("exp",
-                        sequence(reference("exp"), lexical("*"), reference("exp"))
-                        , sequence(reference("exp"), lexical("+"), reference("exp"))
-                        , sequence(lexical("int"))
-                        , sequence(lexical("real")))
+                        sequence(reference("exp"), pattern("*"), reference("exp"))
+                        , sequence(reference("exp"), pattern("+"), reference("exp"))
+                        , sequence(pattern("int"))
+                        , sequence(pattern("real")))
                 .build();
     }
 
