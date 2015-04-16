@@ -2,6 +2,8 @@ package io.alef.yap.expression;
 
 import io.alef.yap.Symbol;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 public class Reference implements Expression {
 
     private final Symbol symbol;
