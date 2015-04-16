@@ -2,4 +2,4 @@
 
 #YaP (Yet another Parser)
 
-Core Context free grammar specification and runtime parser support
+Core Context Free Grammar specification and runtime Parser support

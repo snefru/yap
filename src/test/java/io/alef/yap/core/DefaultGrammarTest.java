@@ -1,5 +1,6 @@
 package io.alef.yap.core;
 
+import io.alef.yap.State;
 import io.alef.yap.Symbol;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -8,6 +9,7 @@ import java.util.Collection;
 
 import static io.alef.yap.expression.Expressions.*;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 
 public class DefaultGrammarTest {
 
@@ -38,5 +40,9 @@ public class DefaultGrammarTest {
         assertEquals(grammar.getAlternates(START_SYMBOL).size(), 2);
     }
 
-
+    @Test
+    public void initialState() {
+        final State initialState = grammar.getInitialState();
+        assertNotNull(initialState);
+    }
 }
